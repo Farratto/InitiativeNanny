@@ -5,8 +5,6 @@
   attribution and copyright information.
 -->
 
-<!-- Quick fix employed by Farratto.  Only adjusted GUI anchors. -->
-
 <root>
 	<windowclass name="npc_combat_top_2014" merge="join">
 		<script file="campaign/scripts/npc_main_5e.lua" />
@@ -14,7 +12,7 @@
 			<label_content_column name="init_label" insertbefore="speed_label">
 				<static textres="initiative" />
 			</label_content_column>
-			<number_chartotal name="init" insertbefore="speed_label">
+			<basicnumber name="init" insertbefore="speed_label">
 				<anchored to="init_label" width="40" height="20">
 					<top parent="contentanchor" anchor="bottom" relation="relative" offset="7" />
 					<left offset="97" />
@@ -37,7 +35,7 @@
 						return action();
 					end
 				</script>
-			</number_chartotal>
+			</basicnumber>
 
 			<label_content_column name="speed_label">
 				<anchored to="init" position="topright" offset="0,10">
@@ -60,7 +58,7 @@
 			<label_content_column name="init_label" insertbefore="speed_label">
 				<static textres="initiative" />
 			</label_content_column>
-			<number_chartotal name="init" insertbefore="speed_label">
+			<basicnumber name="init" insertbefore="speed_label">
 				<anchored to="init_label" width="40" height="20">
 					<top parent="contentanchor" anchor="bottom" relation="relative" offset="7" />
 					<left offset="97" />
@@ -83,7 +81,7 @@
 						return action();
 					end
 				</script>
-			</number_chartotal>
+			</basicnumber>
 		</sheetdata>
 	</windowclass>
 </root>
