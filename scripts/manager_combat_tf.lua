@@ -1,7 +1,10 @@
---
--- Please see the license file included with this distribution for
+-- Please see the LICENSE.txt file included with this distribution for
 -- attribution and copyright information.
---
+
+-- luacheck: globals customSort getInitOverride getEffect buildLinkedOverride buildFixedOverride
+-- luacheck: globals isActorToSkipTurn onTurnEndEvent rollTypeInit setValue rollStandardEntryInit
+-- luacheck: globals onCombatantEffectUpdated onCombatantInitiativeUpdated calculateInit performInitSwapTF
+-- luacheck: globals fperformInitSwap rollTypeInitOriginal
 
 local customSortOriginal;
 local isActorToSkipTurnOriginal;
@@ -11,6 +14,9 @@ local rollStandardEntryInitOriginal;
 local rollEntryInitOriginal;
 
 local tRerolledCombatants;
+
+fperformInitSwap = '';
+rollTypeInitOriginal = '';
 
 function onInit()
 	customSortOriginal = CombatManager.getCustomSort();
@@ -27,6 +33,9 @@ function onInit()
 	CombatManager.rollTypeInit = rollTypeInit;
 	rollStandardEntryInitOriginal = CombatManager.rollStandardEntryInit;
 	CombatManager.rollStandardEntryInit = rollStandardEntryInit;
+
+	fperformInitSwap = CombatManager.performInitSwap;
+	CombatManager.performInitSwap = performInitSwapTF;
 
 	if Session.IsHost then
 		DB.addHandler(CombatManager.CT_COMBATANT_PATH .. ".effects", "onChildUpdate", onCombatantEffectUpdated);
@@ -209,9 +218,9 @@ end
 local setValueOriginal;
 function rollTypeInit(sType, fRollCombatantEntryInit, ...)
 	setValueOriginal = DB.setValue;
-	DB.setValue = setValue;
+	DB.setValue = setValue; --luacheck: ignore 122
 	rollTypeInitOriginal(sType, fRollCombatantEntryInit, ...);
-	DB.setValue = setValueOriginal;
+	DB.setValue = setValueOriginal; --luacheck: ignore 122
 end
 
 function setValue(...)
@@ -254,7 +263,8 @@ end
 
 function onCombatantInitiativeUpdated(nodeInit)
 	local nNewInit = nodeInit.getValue();
-	if newInit == -10000 then
+	--if newInit == -10000 then
+	if nNewInit == -10000 then
 		return; -- This indicates a temporary "clearing" before setting the real value.
 	end
 
@@ -294,4 +304,12 @@ function calculateInit(nodeCombatant)
 	end
 
 	return nTargetInit, bHasOverride;
+end
+
+function performInitSwapTF(nodeSourceCT, nodeTargetCT, bHost)
+	if not getEffect(nodeSourceCT, {"AFTERTURN", "BEFORETURN", "SHARETURN", "FIXINIT"}) and
+		not getEffect(nodeTargetCT, {"AFTERTURN", "BEFORETURN", "SHARETURN", "FIXINIT"
+	}) then
+		fperformInitSwap(nodeSourceCT, nodeTargetCT, bHost);
+	end
 end

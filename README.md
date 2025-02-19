@@ -1,5 +1,15 @@
-# Temporal Fixation
+## Temporal Fixation
+**Current Version**: ~dev_version~ \
+**Updated**: ~date~
+
 A Fantasy Grounds extension that lets you sink your teeth in to initiative.
+
+### Installation
+
+Get the latest version from Farratto's [GitHub](https://github.com/Farratto/TemporalFixation/releases). \
+You can ask questions at the [Fantasy Grounds Forum](https://www.fantasygrounds.com/forums/showthread.php?74159-CoreRPG-Temporal-Fixation).
+
+### Details
 
 Temporal Fixation provides the following effects when used with with any ruleset based based on CoreRPG:
 * **AFTERTURN** - Locks the bearer's initiative to be the same as the target, or source if there is not a single a target, of the effect. And ensures that the bearer of the effect immediately precedes the target in turn order.
@@ -9,10 +19,12 @@ Temporal Fixation provides the following effects when used with with any ruleset
 
 When used in D&D 5e, NPCs are given an initiative field on their sheets that may be used for rolling a specific NPCs initiative. Additionally, there is an extra "Roll ALL" option for "Combat: Auto NPC Initiative" which results in dice being physically rolled for any initiative operation on the Combat Tracker as well as any relevant effects or other extension initiative operation to be handled accordingly.
 
-## Installation
-Download [TemporalFixation.ext](https://github.com/MeAndUnique/TemporalFixation/releases) and place in the extensions subfolder of the Fantasy Grounds data folder.
-
 ## Attribution
-SmiteWorks owns rights to code sections copied from their rulesets by permission for Fantasy Grounds community development.
-'Fantasy Grounds' is a trademark of SmiteWorks USA, LLC.
+MeAndUnique is the original author of Temporal Fixation.  Farratto has taken over its maintenance under the MIT license. \
+SmiteWorks owns rights to code sections copied from their rulesets by permission for Fantasy Grounds community development. \
+'Fantasy Grounds' is a trademark of SmiteWorks USA, LLC. \
 'Fantasy Grounds' is Copyright 2004-2022 SmiteWorks USA LLC.
+
+### Change Log
+
+* v1.0.8: Problem with new native init swapping. FIXED
