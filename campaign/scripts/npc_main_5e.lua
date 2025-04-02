@@ -1,7 +1,7 @@
---
--- Please see the license file included with this distribution for
+-- Please see the LICENSE.txt file included with this distribution for
 -- attribution and copyright information.
---
+
+-- luacheck: globals update
 
 function onInit()
 	if super and super.onInit then

@@ -1,7 +1,7 @@
---
--- Please see the license file included with this distribution for
+-- Please see the LICENSE.txt file included with this distribution for
 -- attribution and copyright information.
---
+
+-- luacheck: globals handleCombatAddInitDnD
 
 local handleCombatAddInitDnDOriginal;
 
@@ -11,10 +11,10 @@ function onInit()
 end
 
 function handleCombatAddInitDnD(tCustom)
-	local nDex = DB.getValue(tCustom.nodeRecord, "abilities.dexterity.score", 10);
-	local nDexMod = math.floor((nDex - 10) / 2);
-	local tempInit = DB.getValue(tCustom.nodeRecord, "inittemporary", 0);
-	DB.setValue(tCustom.nodeCT, "init", "number", nDexMod + tempInit);
+	--local nDex = DB.getValue(tCustom.nodeRecord, "abilities.dexterity.score", 10);
+	--local nDexMod = math.floor((nDex - 10) / 2);
+	--local tempInit = DB.getValue(tCustom.nodeRecord, "inittemporary", 0);
+	--DB.setValue(tCustom.nodeCT, "init", "number", nDexMod + tempInit);
 
 	local sOptINIT = OptionsManager.getOption("INIT");
 	if sOptINIT == "roll" then
